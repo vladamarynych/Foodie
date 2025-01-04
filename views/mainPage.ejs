@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Foodie</title>
+    <link rel="stylesheet" href="/styles/mainPage.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Knewave&family=Lexend:wght@100..900&family=Margarine&family=Mogra&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">Foodie</div>
+        <ul class="menu">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <h1>Welcome to Foodie</h1>
+      <p>Delicious Pizza, Tacos, Sushi, and More!</p>
+    </section>
+
+    <h2 class="carousel-sec-h2">Dishes Of The Day</h2>
+    <section class="carousel">
+      <div class="container">
+        <div class="carousel-view">
+          <button id="prev-btn" class="prev-btn">
+            <svg viewBox="0 0 512 512" width="20" title="chevron-circle-left">
+              <path
+                d="M256 504C119 504 8 393 8 256S119 8 256 8s248 111 248 248-111 248-248 248zM142.1 273l135.5 135.5c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L226.9 256l101.6-101.6c9.4-9.4 9.4-24.6 0-33.9l-17-17c-9.4-9.4-24.6-9.4-33.9 0L142.1 239c-9.4 9.4-9.4 24.6 0 34z"
+              />
+            </svg>
+          </button>
+
+          <div id="item-list" class="item-list">
+            <!-- Items -->
+            <div id="item" class="carousel-item">
+              <img src="<%= randomItems.pizza.img %>" alt="Pizza" />
+              <div class="carousel-caption">
+                <h5><%= randomItems.pizza.name %></h5>
+              </div>
+            </div>
+            <div id="item" class="carousel-item">
+              <img src="<%= randomItems.sushi.img %>" alt="Sushi" />
+              <div class="carousel-caption">
+                <h5><%= randomItems.sushi.name %></h5>
+              </div>
+            </div>
+            <div id="item" class="carousel-item">
+              <img src="<%= randomItems.taco.img %>" alt="Taco" />
+              <div class="carousel-caption">
+                <h5><%= randomItems.taco.name %></h5>
+              </div>
+            </div>
+            <div id="item" class="carousel-item">
+              <img src="<%= randomItems.dessert.img %>" alt="Dessert" />
+              <div class="carousel-caption">
+                <h5><%= randomItems.dessert.name %></h5>
+              </div>
+            </div>
+          </div>
+
+          <button id="next-btn" class="next-btn">
+            <svg viewBox="0 0 512 512" width="20" title="chevron-circle-right">
+              <path
+                d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-section">
+      <h2>Our Menu</h2>
+      <div class="menu-grid">
+        <div class="menu-item">
+          <img src="/assets/img/pizza.png" alt="Pizza" />
+          <h3><a href="/menu/pizza">Pizza</a></h3>
+          <p>Hot and fresh with the finest ingredients.</p>
+        </div>
+        <div class="menu-item">
+          <img src="/assets/img/taco.png" alt="Tacos" />
+          <h3><a href="/menu/tacos">Tacos</a></h3>
+          <p>Spicy and flavorful, straight from Mexico.</p>
+        </div>
+        <div class="menu-item">
+          <img src="/assets/img/sushi.png" alt="Sushi" />
+          <h3><a href="/menu/sushi">Sushi</a></h3>
+          <p>Authentic Japanese sushi, prepared by experts.</p>
+        </div>
+        <div class="menu-item">
+          <img src="/assets/img/cake.png" alt="Desserts" />
+          <h3><a href="/menu/desserts">Desserts</a></h3>
+          <p>Sweet treats to complete your meal.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact-section">
+      <h2>Contact Us</h2>
+      <p>Have any questions? Reach out to us!</p>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required />
+        <input type="email" id="email" placeholder="Your Email" required />
+        <textarea id="message" placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </section>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear()%> Foodie. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const prev = document.getElementById("prev-btn");
+      const next = document.getElementById("next-btn");
+      const list = document.getElementById("item-list");
+
+      const itemWidth = 150;
+      const padding = 10;
+
+      prev.addEventListener("click", () => {
+        list.scrollLeft -= itemWidth + padding;
+      });
+
+      next.addEventListener("click", () => {
+        list.scrollLeft += itemWidth + padding;
+      });
+
+      document
+        .getElementById("contactForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+
+          const name = document.getElementById("name").value;
+          const email = document.getElementById("email").value;
+          const message = document.getElementById("message").value;
+
+          const response = await fetch("http://localhost:8000/send", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ name, email, message }),
+          });
+
+          if (response.ok) {
+            alert("Message sent successfully!");
+          } else {
+            alert("Failed to send the message.");
+          }
+        });
+    </script>
+  </body>
+</html>

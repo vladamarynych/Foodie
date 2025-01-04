@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Menu - Foodie</title>
+    <link rel="stylesheet" href="/styles/menu.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Knewave&family=Lexend:wght@100..900&family=Margarine&family=Mogra&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/menu/pizza">Pizza</a></li>
+          <li><a href="/menu/sushi">Sushi</a></li>
+          <li><a href="/menu/tacos">Tacos</a></li>
+          <li><a href="/menu/desserts">Desserts</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <section class="menu">
+        <h1>Menu</h1>
+        <div id="cart" class="cart">
+          <div>
+            <a href="/cart"
+              ><img src="/assets/img/shopping-cart.png" alt="Shopping Cart"
+            /></a>
+          </div>
+          <span id="cart-count"><%=cart.length%></span>
+        </div>
+        <div class="menu-items">
+          <% items.forEach(item => { %>
+          <div class="menu-item">
+            <img src="<%= item.img %>" alt="<%= item.name %>" />
+            <h2><%= item.name %></h2>
+            <p><%= item.description %></p>
+            <span class="price"><%= item.price %></span>
+            <button class="add-to-cart" data-name="<%= item.name %>">+</button>
+          </div>
+          <% }); %>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear()%> Foodie. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      const cartCount = document.getElementById("cart-count");
+
+      async function addToCart(itemName) {
+        const response = await fetch("/cart/add", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ name: itemName }),
+        });
+        const data = await response.json();
+        cartCount.textContent = data.count;
+      }
+
+      document.querySelectorAll(".add-to-cart").forEach((button) => {
+        button.addEventListener("click", () => {
+          const itemName = button.dataset.name;
+          addToCart(itemName);
+        });
+      });
+    </script>
+  </body>
+</html>

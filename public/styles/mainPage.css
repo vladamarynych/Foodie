@@ -1,0 +1,202 @@
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #ff6347;
+  color: white;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+.hero {
+  background: url("/assets/img/restaurant.jpg") no-repeat center center/cover;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  padding: 100px 20px;
+  margin-top: 0;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 20px;
+}
+
+.cta-button {
+  background-color: #ff6347;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.menu-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #fffaf0;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.menu-item img {
+  max-width: 50px;
+  height: auto;
+}
+
+.menu-item h3 {
+  margin: 10px 0 5px;
+}
+
+.contact-section {
+  padding: 40px 20px;
+  background-color: #ffe4b5;
+  text-align: center;
+}
+
+.contact-section form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.contact-section input,
+.contact-section textarea {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.contact-section button {
+  background-color: #ff6347;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #ff6347;
+  color: white;
+}
+
+.carousel-item img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 15px;
+  border: #ff6347 5px solid;
+}
+
+.carousel-caption {
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.6);
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
+.carousel-caption h5 {
+  margin: 0;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+}
+
+.carousel-sec-h2 {
+  text-align: center;
+  margin: 50px 10px;
+}
+
+.next-btn,
+.prev-btn {
+  border: none;
+  cursor: pointer;
+  color: white;
+  background: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.container {
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-view {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.25s ease-in;
+}
+
+.carousel-view .item-list {
+  max-width: 950px;
+  width: 70vw;
+
+  display: flex;
+  gap: 48px;
+  scroll-behavior: smooth;
+  transition: all 0.25s ease-in;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  overflow: auto;
+  scroll-snap-type: x mandatory;
+}
+
+.item-list::-webkit-scrollbar {
+  display: none;
+}
+
+.prev-btn {
+  background: none;
+  cursor: pointer;
+}
+
+.next-btn {
+  cursor: pointer;
+}
+
+.carousel-item {
+  position: relative;
+}

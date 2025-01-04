@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart - Foodie</title>
+    <link rel="stylesheet" href="/styles/cart.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Knewave&family=Lexend:wght@100..900&family=Margarine&family=Mogra&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/about">About Us</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main>
+      <main>
+        <section class="cart">
+          <h1>Your Cart</h1>
+          <div id="cart-items">
+            <% if (cart.length > 0) { %> <% cart.forEach(item => { %>
+            <div class="cart-item">
+              <img src="<%= item.img %>" alt="<%= item.name %>" />
+              <h2><%= item.name %></h2>
+              <p><%= item.description %></p>
+              <span class="price"><%= item.price %></span>
+              <span class="quantity">Quantity: <%= item.quantity %></span>
+              <button class="remove-item" data-name="<%= item.name %>">
+                Remove
+              </button>
+            </div>
+            <% }); %>
+            <button id="checkout">Checkout</button>
+            <% } else { %>
+            <p>Your cart is empty</p>
+            <% } %>
+          </div>
+        </section>
+      </main>
+    </main>
+
+    <footer>
+      <p>&copy; <%= new Date().getFullYear()%> Foodie. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+      document.querySelectorAll(".remove-item").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const itemName = button.dataset.name;
+          const response = await fetch("/cart/remove", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ name: itemName }),
+          });
+          const data = await response.json();
+          if (data.success) {
+            location.reload();
+          }
+        });
+      });
+
+      document.getElementById("checkout").addEventListener("click", () => {
+        window.location.href = "/checkout";
+      });
+    </script>
+  </body>
+</html>
