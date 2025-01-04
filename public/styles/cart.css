@@ -69,6 +69,11 @@ header:first-of-type nav ul li a {
   color: #666;
 }
 
+p {
+  text-align: center;
+  font-size: 1.3rem;
+}
+
 .price,
 .quantity {
   font-weight: bold;
@@ -100,4 +105,15 @@ footer {
   padding: 10px 20px;
   background-color: #ff6347;
   color: white;
+}
+
+@media (max-width: 600px) {
+  header nav ul {
+    flex-direction: column;
+  }
+
+  .cart-item {
+    flex-direction: column;
+    text-align: center;
+  }
 }
